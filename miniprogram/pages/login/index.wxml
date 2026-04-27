@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="card">
+    <view class="title">训练时间表</view>
+    <view class="sub-title">请选择身份并登录</view>
+
+    <view class="form-label">昵称</view>
+    <input class="input" placeholder="请输入昵称" value="{{name}}" bindinput="onNameInput" />
+
+    <view class="form-label">身份</view>
+    <radio-group bindchange="onRoleChange">
+      <label style="margin-right: 32rpx;">
+        <radio value="student" checked="{{role==='student'}}" /> 学生
+      </label>
+      <label>
+        <radio value="coach" checked="{{role==='coach'}}" /> 教练
+      </label>
+    </radio-group>
+
+    <button class="btn-primary" style="margin-top: 20rpx;" bindtap="onLogin">微信一键登录（模拟）</button>
+  </view>
+</view>

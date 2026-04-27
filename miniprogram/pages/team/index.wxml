@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="card" wx:if="{{user && user.role === 'coach'}}">
+    <view class="title">创建训练组（教练）</view>
+    <view class="form-label">训练组名称</view>
+    <input class="input" placeholder="例如：校队A组" value="{{teamName}}" bindinput="onTeamNameInput" />
+    <button class="btn-primary" bindtap="createTeam">创建训练组</button>
+  </view>
+
+  <view class="card" wx:if="{{user}}">
+    <view class="title">加入训练组（学生）</view>
+    <view class="form-label">邀请码</view>
+    <input class="input" placeholder="请输入6位邀请码" value="{{inviteCode}}" bindinput="onInviteCodeInput" />
+    <button class="btn-secondary" bindtap="joinTeam">通过邀请码加入</button>
+  </view>
+
+  <view class="card" wx:if="{{team}}">
+    <view class="title">当前训练组</view>
+    <view class="sub-title">名称：{{team.team_name}}</view>
+    <view class="sub-title">邀请码：{{team.invite_code}}</view>
+    <view class="sub-title">成员数：{{team.member_ids.length}}</view>
+  </view>
+</view>

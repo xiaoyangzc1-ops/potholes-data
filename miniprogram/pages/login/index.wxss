@@ -1,0 +1,4 @@
+radio-group {
+  display: flex;
+  margin: 12rpx 0;
+}

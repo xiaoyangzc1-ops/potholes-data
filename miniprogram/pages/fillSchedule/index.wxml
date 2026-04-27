@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="card" wx:if="{{!task}}">
+    <view class="title">暂无可填写任务</view>
+    <view class="sub-title">请等待教练创建本周任务</view>
+  </view>
+
+  <view class="card" wx:if="{{task && !isTargeted}}">
+    <view class="title">你本周未被 @</view>
+    <view class="sub-title">本周无需填写时间</view>
+  </view>
+
+  <view class="card" wx:if="{{task && isTargeted}}">
+    <view class="title">{{task.week_label}}</view>
+    <view class="sub-title">请选择你的空闲时间（1小时粒度）</view>
+
+    <block wx:for="{{days}}" wx:key="key">
+      <view style="margin-bottom: 16rpx;">
+        <view class="form-label">{{item.label}}</view>
+        <view style="display:flex;flex-wrap:wrap;gap:8rpx;">
+          <view
+            wx:for="{{hourSlots}}"
+            wx:for-item="slot"
+            wx:key="key"
+            data-day="{{item.key}}"
+            data-slot="{{slot.key}}"
+            bindtap="toggleSlot"
+            style="padding:8rpx 10rpx;border-radius:8rpx;border:1rpx solid #d0d7de;{{selectedMap[item.key + '_' + slot.key] ? 'background:#1f6feb;color:#fff;border-color:#1f6feb;' : ''}}"
+          >
+            {{slot.key}}
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <button class="btn-primary" bindtap="onSave">保存我的空闲时间</button>
+  </view>
+</view>
