@@ -36,6 +36,11 @@ Page({
     }
 
     const user = getApp().globalData.currentUser || wx.getStorageSync('currentUser');
+    if (!user || user.role !== 'coach') {
+      wx.showToast({ title: '仅教练可发布训练', icon: 'none' });
+      return;
+    }
+
     const session = {
       _id: `training_${Date.now()}`,
       task_id: task._id,
