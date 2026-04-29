@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="card">
+    <view class="title">历史周任务</view>
+    <view wx:for="{{tasks}}" wx:key="_id" style="padding:8rpx 0;border-top:1rpx solid #eee;">
+      <view>{{item.week_label}}</view>
+      <view class="sub-title">被@人数：{{item.target_member_ids.length}}，状态：{{item.status}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">历史训练发布</view>
+    <view wx:for="{{sessions}}" wx:key="_id" style="padding:8rpx 0;border-top:1rpx solid #eee;">
+      <view>{{item.weekday}} {{item.date}} {{item.start_time}}-{{item.end_time}}</view>
+      <view class="sub-title">地点：{{item.location}}；参与：{{item.selected_member_ids.length}}人</view>
+    </view>
+  </view>
+</view>

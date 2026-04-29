@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="card" wx:if="{{!task}}">
+    <view class="title">暂无可推荐任务</view>
+  </view>
+
+  <view class="card" wx:for="{{list}}" wx:key="index">
+    <view class="title">{{item.weekday}} {{item.date.slice(5)}} {{item.start}}-{{item.end}}</view>
+    <view class="sub-title">可参加：{{item.available_count}} / {{item.total_count}}</view>
+    <view class="sub-title">可参加成员ID：{{item.available_member_ids.join('，')}}</view>
+    <view class="sub-title">不可参加成员ID：{{item.unavailable_member_ids.join('，')}}</view>
+    <button class="btn-secondary" data-index="{{index}}" bindtap="onSelect">用此时间发布训练</button>
+  </view>
+</view>

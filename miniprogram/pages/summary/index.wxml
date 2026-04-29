@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="card" wx:if="{{!task}}">
+    <view class="title">暂无周任务</view>
+  </view>
+
+  <view class="card" wx:if="{{task}}">
+    <view class="title">{{task.week_label}} 汇总</view>
+    <view class="sub-title">基于已提交 {{submittedCount}} 人 / 被 @ {{targetCount}} 人</view>
+    <view class="sub-title">未提交：{{unsubmittedNames.length ? unsubmittedNames.join('，') : '无'}}</view>
+  </view>
+
+  <scroll-view scroll-x="true" class="card" wx:if="{{task}}">
+    <view style="min-width: 1400rpx;">
+      <view style="display:flex;font-weight:600;padding-bottom:8rpx;">
+        <view style="width:180rpx;">成员</view>
+        <view wx:for="{{weekDates}}" wx:key="key" style="width:170rpx;">{{item.weekday}} {{item.date.slice(5)}}</view>
+      </view>
+
+      <view wx:for="{{rows}}" wx:key="name" style="display:flex;padding:8rpx 0;border-top:1rpx solid #eee;">
+        <view style="width:180rpx;">{{item.name}}</view>
+        <view wx:for="{{item.cells}}" wx:key="index" style="width:170rpx;">{{item}}</view>
+      </view>
+
+      <view style="display:flex;padding:8rpx 0;border-top:1rpx solid #eee;">
+        <view style="width:180rpx;font-weight:600;">共同空闲</view>
+        <view wx:for="{{commonCells}}" wx:key="index" style="width:170rpx;">{{item}}</view>
+      </view>
+
+      <view style="display:flex;padding:8rpx 0;border-top:1rpx solid #eee;">
+        <view style="width:180rpx;font-weight:600;">推荐时间</view>
+        <view wx:for="{{recommendCells}}" wx:key="index" style="width:170rpx;">{{item}}</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="card" wx:if="{{task}}">
+    <button class="btn-primary" bindtap="goRecommendations">查看完整推荐列表</button>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="card" wx:if="{{user}}">
+    <view class="title">你好，{{user.name}}</view>
+    <view class="sub-title">当前身份：{{user.role === 'coach' ? '教练' : '学生'}}</view>
+    <view class="sub-title">当前训练组：{{team ? team.team_name : '未加入'}}</view>
+  </view>
+
+  <view class="card" wx:if="{{publishedSession}}">
+    <view class="title">最终训练安排</view>
+    <view class="sub-title">{{publishedSession.weekday}} {{publishedSession.date}} {{publishedSession.start_time}}-{{publishedSession.end_time}}</view>
+    <view class="sub-title">地点：{{publishedSession.location}}</view>
+  </view>
+
+  <view class="card" wx:if="{{!user}}">
+    <view class="title">欢迎使用训练时间表</view>
+    <view class="sub-title">请先登录</view>
+    <button class="btn-primary" bindtap="goLogin">去登录</button>
+  </view>
+
+  <view class="card" wx:if="{{user}}">
+    <button class="btn-primary" bindtap="goTeam">创建 / 加入训练组</button>
+    <button class="btn-primary" style="margin-top: 12rpx;" wx:if="{{user.role === 'coach'}}" bindtap="goCreateTask">创建本周任务</button>
+    <button class="btn-secondary" style="margin-top: 12rpx;" bindtap="goFillSchedule">填写我的空闲时间</button>
+    <button class="btn-secondary" style="margin-top: 12rpx;" bindtap="goSummary">查看本周汇总表</button>
+    <button class="btn-secondary" style="margin-top: 12rpx;" bindtap="goRecommendations">查看推荐训练时间</button>
+    <button class="btn-primary" style="margin-top: 12rpx;" wx:if="{{user.role === 'coach'}}" bindtap="goPublish">发布最终训练时间</button>
+    <button class="btn-secondary" style="margin-top: 12rpx;" bindtap="goHistory">历史周次</button>
+  </view>
+</view>

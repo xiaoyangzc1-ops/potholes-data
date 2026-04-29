@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/index/index",
+    "pages/team/index",
+    "pages/createTask/index",
+    "pages/fillSchedule/index",
+    "pages/summary/index",
+    "pages/recommendations/index",
+    "pages/publishTraining/index",
+    "pages/history/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "训练时间表",
+    "navigationBarBackgroundColor": "#1f6feb",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f6f8fa"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

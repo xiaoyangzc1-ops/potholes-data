@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="card" wx:if="{{selected}}">
+    <view class="title">已选时间</view>
+    <view class="sub-title">{{selected.weekday}} {{selected.date}} {{selected.start}}-{{selected.end}}</view>
+  </view>
+
+  <view class="card" wx:if="{{!selected}}">
+    <view class="title">请先在推荐页选择时间</view>
+  </view>
+
+  <view class="card" wx:if="{{task}}">
+    <view class="form-label">训练地点</view>
+    <input class="input" placeholder="例如：体育馆A场" bindinput="onLocationInput" />
+    <view class="form-label">备注</view>
+    <input class="input" placeholder="例如：提前10分钟到" bindinput="onNoteInput" />
+    <button class="btn-primary" bindtap="onPublish">发布最终训练时间</button>
+  </view>
+
+  <view class="card" wx:if="{{published}}">
+    <view class="title">已发布</view>
+    <view class="sub-title">{{published.weekday}} {{published.date}} {{published.start_time}}-{{published.end_time}}</view>
+    <view class="sub-title">地点：{{published.location}}</view>
+    <view class="sub-title">参与：{{published.selected_member_ids.length}}人</view>
+  </view>
+</view>
